@@ -39,8 +39,10 @@ ro.telephony.call_ring.multiple=false
 ro.telephony.call_ring.delay=3000
 
 # USB
-persist.sys.usb.config=mtp,adb
+persist.sys.usb.config=mass_storage,adb
 persist.service.adb.enable=1
+persist.sys.emmcpartition=1
+ro.emmc.sdcard.partition=18
 
 # Wifi
 wifi.interface=wlan0

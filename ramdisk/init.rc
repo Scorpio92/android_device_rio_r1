@@ -21,11 +21,6 @@ loglevel 7
     export ANDROID_ROOT /system
     export ANDROID_ASSETS /system/app
     export ANDROID_DATA /data
-    export EXTERNAL_STORAGE /mnt/sdcard
-    export PHONE_STORAGE /mnt/emmc
-    #removed QBLE-310 wangxiaoyu 20120621 (start)
-    #export FAKE_STORAGE /mnt/fat
-    #removed QBLE-310 wangxiaoyu 20120621 (end)
     export ASEC_MOUNTPOINT /mnt/asec
     export LOOP_MOUNTPOINT /mnt/obb
     export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/framework2.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar
@@ -39,12 +34,6 @@ loglevel 7
     symlink /system/vendor /vendor
 
 # create mountpoints
-    mkdir /storage 0775 system sdcard_r
-    mkdir /mnt/sdcard 0000 system system
-    mkdir /mnt/emmc 0000 system system
-    #removed QBLE-310 wangxiaoyu 20120621 (start)
-    #mkdir /mnt/fat 0000 system system
-    #removed QBLE-310 wangxiaoyu 20120621 (end)
 # create USB host bus directory here so that libusbhost
 # can start monitoring.
     mkdir /dev/bus 0755 root root
@@ -59,15 +48,6 @@ loglevel 7
     mkdir /acct
     mount cgroup none /acct cpuacct
     mkdir /acct/uid
-
-# Backwards Compat - XXX: Going away in G*
-    symlink /mnt/sdcard /sdcard
-    symlink /mnt/emmc /emmc
-    #symlink /mnt/sdcard /mnt/外部存储卡
-    #symlink /mnt/emmc /mnt/内部存储卡
-    #removed QBLE-310 wangxiaoyu 20120621 (start)
-    #symlink /mnt/fat /fat
-    #removed QBLE-310 wangxiaoyu 20120621 (end)
 
     mkdir /system
     mkdir /data 0771 system system

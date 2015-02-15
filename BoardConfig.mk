@@ -77,7 +77,7 @@ TARGET_FORCE_CPU_UPLOAD := true
 #BOARD_CUSTOM_GRAPHICS := ../../../device/gigabyte/rio/recovery/graphics.c
 TARGET_RECOVERY_FSTAB := device/gigabyte/rio/ramdisk/fstab.qcom
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_UMS_LUNFILE := "sys/class/android_usb/f_mass_storage/lun/file"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 TARGET_USERIMAGES_USE_EXT4 := true
 #BOARD_HAS_LARGE_FILESYSTEM := true
 #BOARD_HAS_NO_MISC_PARTITION := true
@@ -89,6 +89,12 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom loglevel=1
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 4096
 
+# USB
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
+TARGET_USE_CUSTOM_SECOND_LUN_NUM := 1
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+BOARD_VOLD_MAX_PARTITIONS := 19
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
 # Partition sizes
 #TARGET_USERIMAGES_USE_EXT4 := true
