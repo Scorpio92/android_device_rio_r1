@@ -17,11 +17,14 @@
 # Sample: This is where we'd set a backup provider if we had one
 # $(call inherit-product, device/sample/products/backup_overlay.mk)
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+$(call inherit-product, vendor/aokp/configs/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/gigabyte/rio/device.mk)
+
+$(call inherit-product, device/gigabyte/rio/vendor.mk)
 
 PRODUCT_NAME := rio
 PRODUCT_DEVICE := rio
