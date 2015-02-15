@@ -8,7 +8,7 @@ $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/zImage:kernel
 
-# These are the hardware-specific features
+# Hardware features available on this device
 PRODUCT_COPY_FILES += \
 frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
 frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
@@ -22,37 +22,36 @@ frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permiss
 frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
 
 # Graphics
 PRODUCT_PACKAGES += \
 copybit.msm7x27a \
 gralloc.msm7x27a \
-hwcomposer.msm7x27a \
-libtilerenderer
+hwcomposer.msm7x27a
 
 
-# Audio
+# FM Radio
 PRODUCT_PACKAGES += \
-audio.a2dp.default \
-audio_policy.msm7x27a \
-audio.primary.msm7x27a
+FM2 \
+libqcomfm_jni \
+qcom.fmradio
 
-# Power HAL
+# Bluetooth
+PRODUCT_COPY_FILES += \
+system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
+
+# Lights
 PRODUCT_PACKAGES += \
-power.msm7x27a
+lights.rio
 
 # Video
 PRODUCT_PACKAGES += \
 libmm-omxcore \
 libOmxCore \
 libstagefrighthw
-
-
-# For userdebug builds
-ADDITIONAL_DEFAULT_PROPERTIES += \
-ro.secure=0
 
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
