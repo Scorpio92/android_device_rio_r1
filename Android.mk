@@ -25,7 +25,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),grand_memo)
+ifeq ($(TARGET_DEVICE),rio)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
