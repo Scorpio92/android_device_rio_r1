@@ -34,9 +34,24 @@ ro.vendor.extension_library=/system/lib/libqc-opt.so
 ro.telephony.ril_class=QualcommSharedRIL
 rild.libpath=/system/lib/libril-qc-1.so
 rild.libargs=-d /dev/smd0
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+DEVICE_PROVISIONED=1
+keyguard.no_require_sim=1
 ril.subscription.types=NV,RUIM
 ro.telephony.call_ring.multiple=false
 ro.telephony.call_ring.delay=3000
+ro.use_data_netmgrd=true
+persist.data.ds_fmc_app.mode=0
+persist.multisim.config=dsds
+persist.dsds.enabled=true00
 
 # USB
 persist.sys.usb.config=mass_storage,adb
