@@ -14,111 +14,88 @@
 # limitations under the License.
 #
 
+TARGET_SPECIFIC_HEADER_PATH := device/gigabyte/rio/include
+
 # Platform
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
-TARGET_NO_RECOVERY := true
+#TARGET_NO_RECOVERY := true
 
 TARGET_BOARD_PLATFORM := msm7x27a
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
+TARGET_BOOTLOADER_BOARD_NAME := rio
 TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a5
 TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
-
-TARGET_ARCH_LOWMEM := true
 TARGET_CPU_SMP := true
 
 # Compiler flags
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 
+# Bionic
+TARGET_CORTEX_CACHE_LINE_32 := true
+TARGET_USE_SPARROW_BIONIC_OPTIMIZATION := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
 
 # Graphics
 BOARD_EGL_CFG              := device/gigabyte/rio/proprietary/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
-TARGET_QCOM_DISPLAY_VARIANT := legacy
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
-BOARD_EGL_WORKAROUND_BUG_10194508 := true
-BOARD_USE_MHEAP_SCREENSHOT := true
-
-# Camera
-BOARD_NEEDS_MEMORYHEAPPMEM := true
-COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Video
-TARGET_QCOM_LEGACY_OMX := true
-TARGET_QCOM_MEDIA_VARIANT := legacy
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
+COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK -DQCOM_ICS_DECODERS
 
 # Audio
 TARGET_PROVIDES_LIBAUDIO := true
-TARGET_QCOM_AUDIO_VARIANT := caf
-BOARD_USES_LEGACY_ALSA_AUDIO := true
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+
+# Camera
+BOARD_NEEDS_MEMORYHEAPPMEM := true
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 
 # Qualcomm hardware
 BOARD_USES_QCOM_HARDWARE := true
+BOARD_USES_QCOM_LIBS := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
-TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
-# Wi-Fi
-BOARD_WLAN_DEVICE := ath6kl
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_ath6kl
-BOARD_HOSTAPD_DRIVER := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_ath6kl
-WPA_SUPPLICANT_VERSION := VER_0_8_X
-WIFI_DRIVER_MODULE_PATH := "/data/misc/wifi/load/ar6000.ko"
-WIFI_DRIVER_MODULE_NAME := "ar6000"
-WIFI_TEST_INTERFACE := "sta"
-WIFI_DRIVER_FW_PATH_STA := "sta"
-WIFI_DRIVER_FW_PATH_AP := "ap"
-WIFI_DRIVER_FW_PATH_P2P := "p2p"
-BOARD_HAS_ATH_WLAN := true
-
-# GPS
-BOARD_USES_QCOM_GPS := true
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := u8833d
-BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
+# FM Radio
+BOARD_HAVE_QCOM_FM := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
 
 # Webkit
-PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
+ENABLE_WEBGL: = true
+#PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 TARGET_FORCE_CPU_UPLOAD := true
 
-# Partition sizes
+# Recovery
+#BOARD_CUSTOM_GRAPHICS := ../../../device/gigabyte/rio/recovery/graphics.c
+TARGET_RECOVERY_FSTAB := device/gigabyte/rio/ramdisk/fstab.qcom
+BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_UMS_LUNFILE := "sys/class/android_usb/f_mass_storage/lun/file"
 TARGET_USERIMAGES_USE_EXT4 := true
+#BOARD_HAS_LARGE_FILESYSTEM := true
+#BOARD_HAS_NO_MISC_PARTITION := true
+#BOARD_USES_MMCUTILS := true
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+DEVICE_RESOLUTION := 480x800
+BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_10x18.h\"
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom loglevel=1
+BOARD_KERNEL_BASE := 0x00200000
+BOARD_KERNEL_PAGESIZE := 4096
+
+
+# Partition sizes
+#TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x800000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x1400000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1207943168
 BOARD_FLASH_BLOCK_SIZE := 131072
-
-
-# Board specific SELinux policy variable definitions
-BOARD_SEPOLICY_DIRS := \
-       device/zte/grand_memo/sepolicy
-
-BOARD_SEPOLICY_UNION := \
-       app.te \
-       bluetooth.te \
-       device.te \
-       domain.te \
-       drmserver.te \
-       file.te \
-       file_contexts \
-       hci_init.te \
-       init_shell.te \
-       keystore.te \
-       mediaserver.te \
-       kickstart.te \
-       nfc.te \
-       rild.te \
-       surfaceflinger.te \
-       system.te \
-       ueventd.te \
-       wpa.te
 
 
