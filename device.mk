@@ -6,7 +6,7 @@ DEVICE_PACKAGE_OVERLAYS += device/gigabyte/rio/overlay
 #kernel
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/proprietary/zImage:kernel
+    $(LOCAL_PATH)/zImage:kernel
 
 # Hardware features available on this device
 PRODUCT_COPY_FILES += \
@@ -52,6 +52,20 @@ PRODUCT_PACKAGES += \
 libmm-omxcore \
 libOmxCore \
 libstagefrighthw
+
+# Audio
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio.primary.msm7x27a \
+    audio_policy.msm7x27a
+
+# GPS
+PRODUCT_PACKAGES += \
+    gps.rio
+
+# Power HAL
+PRODUCT_PACKAGES += \
+    power.msm7x27a
 
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
