@@ -50,8 +50,25 @@ ro.telephony.call_ring.multiple=false
 ro.telephony.call_ring.delay=3000
 ro.use_data_netmgrd=true
 persist.data.ds_fmc_app.mode=0
-persist.multisim.config=dsds
-persist.dsds.enabled=true00
+ro.config.hwft_simrefresh=true
+ro.config.hw_nullalpha_act=true
+ro.config.dsds_mode=umts_gsm
+persist.dsds.enabled=true
+ro.huawei.dsds.signalbarcust=true
+ro.config.hw.logsystem.auto.act=1
+ro.config.hw.lca.show.config=1
+ro.config.hw_vcardBase64=true
+ro.config.hw.usedtime.statis=1
+ro.dual.sim.phone=true
+#ro.telephony.default_network=3
+ro.config.hw_cdma_cdg=false
+ro.config.hw_dts=true
+ro.huawei.cust.drm.fl_only=true
+ro.config.hw_music_dts=false
+ro.config.hw_dtsmode=true
+ro.config.is_cdma_phone=true
+ro.cfg.hw_ctl_cardactive=true
+persist.multisim.config=1
 
 # USB
 persist.sys.usb.config=mass_storage,adb
