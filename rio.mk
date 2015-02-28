@@ -19,7 +19,14 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-$(call inherit-product, vendor/aokp/configs/common.mk)
+## Specify phone tech before including full_phone
+$(call inherit-product, vendor/cm/config/gsm.mk)
+
+# Inherit some common CM stuff.
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
+# Correct boot animation size for the screen.
+TARGET_BOOTANIMATION_NAME := vertical-480x800
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/gigabyte/rio/device.mk)
